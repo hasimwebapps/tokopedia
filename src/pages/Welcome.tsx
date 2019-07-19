@@ -13,7 +13,11 @@ class TokpedTest extends React.PureComponent {
     hideResult: true,
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(
+      'Please contact  Me \n Hasim Imahdudin \n hasim.blogger@gmail.com, hasim.imahdudin@gmail.com \n 085642856762 :) ',
+    );
+  }
 
   handleHitung = () => {
     // contoh koin 1500
