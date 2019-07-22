@@ -95,7 +95,7 @@ class TokpedTest extends React.PureComponent {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e: any)  => {
     let _this = this;
     e.preventDefault();
     this.props.form.validateFields((err: any, values: any) => {
