@@ -97,9 +97,16 @@ export default {
       routes: [
         {
           path: '/',
-          name: 'welcome',
+          name: 'Bismillah',
           icon: 'smile',
           component: './Welcome',
+        },
+        {
+          path: '/portofolio',
+          name: 'Portofolio',
+          icon: 'smile',
+          component: './Portofolio',
+          hideInMenu: true
         },
         {
           component: './404',
