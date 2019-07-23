@@ -12,7 +12,7 @@ import {
   Cascader,
   Row,
   Col,
-  Tooltip,
+  Checkbox,
   Icon,
   InputNumber,
 } from 'antd';
@@ -95,10 +95,10 @@ class TokpedTest extends React.PureComponent {
     });
   };
 
-  handleSubmit = (e: any)  => {
+  handleSubmit = (e: any) => {
     let _this = this;
     e.preventDefault();
-    this.props.form.validateFields((err: any, values: any) => {
+    this.props.form.validateFields(['nominal'], (err: any, values: any) => {
       if (!err) {
         _this.processCalculate();
       }
@@ -126,29 +126,38 @@ class TokpedTest extends React.PureComponent {
     }
   };
 
-  updateCoinList = (idx: any, e: any) => {
-    console.log(idx, e.target.value);
-    const value = e.target.value;
+  onChangeCoin = (checkedValues: any) => {
     this.setState({
-      coinList: value,
+      coinList: checkedValues,
     });
+    message.info(`Coin List` + checkedValues);
   };
 
   render() {
-    const { hasil, sisa, nominal, hideResult, coinList } = this.state;
+    const { hasil, sisa, nominal, hideResult } = this.state;
     const array = Object.keys(hasil).reverse();
     const { getFieldDecorator } = this.props.form;
+    const actionOptions = [
+      { label: '100000', value: 100000 },
+      { label: '50000', value: 50000 },
+      { label: '20000', value: 20000 },
+      { label: '10000', value: 10000 },
+      { label: '5000', value: 5000 },
+      { label: '1000', value: 1000 },
+      { label: '500', value: 500 },
+      { label: '100', value: 100 },
+      { label: '50', value: 50 },
+    ];
 
     return (
       <React.Fragment>
         <Row>
-          {coinList.map((val, idx) => {
-            return (
-              <Col span={4} key={idx}>
-                <Input defaultValue={val} onKeyUp={e => this.updateCoinList(idx, e)} />
-              </Col>
-            );
-          })}
+          <Form.Item label="">
+            {getFieldDecorator('action', {
+              initialValue: actionOptions.map(opt => opt && opt.value),
+              rules: [{ type: 'array', required: true, message: 'your message' }],
+            })(<Checkbox.Group options={actionOptions} onChange={this.onChangeCoin} />)}
+          </Form.Item>
         </Row>
         <Row>
           <Form onSubmit={this.handleSubmit} className="test-web-form">
