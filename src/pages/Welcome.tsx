@@ -4,20 +4,12 @@ import { withRouter } from 'react-router-dom';
 import {
   Form,
   Input,
-  Select,
   message,
-  Modal,
-  Table,
   Button,
-  Cascader,
   Row,
   Col,
   Checkbox,
-  Icon,
-  InputNumber,
 } from 'antd';
-
-const FormItem = Form.Item;
 
 @Form.create()
 class TokpedTest extends React.PureComponent {
