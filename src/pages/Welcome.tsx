@@ -1,15 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import {
-  Form,
-  Input,
-  message,
-  Button,
-  Row,
-  Col,
-  Checkbox,
-} from 'antd';
+import { Form, Input, message, Button, Row, Col, Checkbox, Anchor } from 'antd';
+
+const { Link } = Anchor;
 
 @Form.create()
 class TokpedTest extends React.PureComponent {
@@ -143,6 +137,13 @@ class TokpedTest extends React.PureComponent {
 
     return (
       <React.Fragment>
+        <Row>
+          <Col span={4} offset={20}>
+            <Anchor>
+              <Link href="https://github.com/hasimwebapps/tokopedia.git" title="Show In Github" />
+            </Anchor>
+          </Col>
+        </Row>
         <Row>
           <Form.Item label="">
             {getFieldDecorator('action', {
